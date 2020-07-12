@@ -3,7 +3,7 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
-import { getItems } from '../../actions/itemAction';
+import { getItems, deleteItem } from '../../actions/itemAction';
 import styles from '../../components/ShoppingList/List.module.css';
 import PropTypes from 'prop-types';
 
@@ -24,10 +24,7 @@ class ShoppingList extends Component {
 
     // Func to Delete Item
     deleteItemHandler = (id) => {
-        const deleteItem = [...this.state.items];
-        this.setState({
-            items: deleteItem.filter(item => item.id !== id)
-        });
+        this.props.deleteItem(id);
     }
 
     componentDidMount() {
@@ -38,10 +35,10 @@ class ShoppingList extends Component {
         const { items } = this.props.item;
         return (
             <Container>
-                <Button style={{ marginBotton: '2rem' }}
+                {/* <Button style={{ marginBotton: '2rem' }}
                     onClick={this.addItemHandler}
                     color="dark">
-                    Add Item</Button>
+                    Add Item</Button> */}
                 <ListGroup className="mt-5">
                     <TransitionGroup className="shopping-list">
                         {items.map(({ id, name }) => (
@@ -73,4 +70,4 @@ const mapStateToProps = (state) => ({
     item: state.item
 });
 
-export default connect(mapStateToProps, { getItems })(ShoppingList);
+export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);

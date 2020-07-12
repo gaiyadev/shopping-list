@@ -4,20 +4,21 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import AppBar from './components/Navbar/AppBar';
 import ShoppingList from './components/ShoppingList/List';
+import ItemModal from './components/ItemModal/Modal';
+import { Container } from 'reactstrap';
 import './App.css';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <AppBar />
-          <ShoppingList />
+          <Container>
+            <ItemModal />
+            <ShoppingList />
+          </Container>
         </div>
       </Provider>
     );
