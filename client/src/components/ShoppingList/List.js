@@ -35,10 +35,6 @@ class ShoppingList extends Component {
         const { items } = this.props.item;
         return (
             <Container>
-                {/* <Button style={{ marginBotton: '2rem' }}
-                    onClick={this.addItemHandler}
-                    color="dark">
-                    Add Item</Button> */}
                 <ListGroup className="mt-5">
                     <TransitionGroup className="shopping-list">
                         {items.map(({ id, name }) => (
