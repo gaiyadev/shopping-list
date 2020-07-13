@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_ITEMS, DELETE_ITEM } from './action';
+import { GET_ITEMS, ADD_ITEMS, DELETE_ITEM } from '../actions/action';
 
 export const getItems = () => {
     return {

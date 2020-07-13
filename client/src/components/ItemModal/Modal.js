@@ -11,7 +11,7 @@ import {
     Input
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addItem } from '../../actions/itemAction';
+import { addItem } from '../../redux/actions/itemAction';
 import { v4 as uuid } from 'uuid';
 
 class ModalWindow extends Component {

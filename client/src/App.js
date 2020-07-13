@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './redux/store/store';
 import AppBar from './components/Navbar/AppBar';
 import ShoppingList from './components/ShoppingList/List';
 import ItemModal from './components/ItemModal/Modal';

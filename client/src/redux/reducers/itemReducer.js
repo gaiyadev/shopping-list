@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
-import * as actionTypes from '../actions/action';
-import store from '../store/store';
+import * as actionTypes from '../../redux/actions/action';
+import store from '../../redux/store/store';
 
 const initialState = {
     items: [
