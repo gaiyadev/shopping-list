@@ -14,7 +14,6 @@ import { connect } from 'react-redux';
 import { addItem } from '../../actions/itemAction';
 import { v4 as uuid } from 'uuid';
 
-
 class ModalWindow extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +55,7 @@ class ModalWindow extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggleHandler}>
                     <ModalHeader toggle={this.toggleHandler}>Add Item</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.onSubmitHandler}>
+                        <Form autoComplete="off" onSubmit={this.onSubmitHandler}>
                             <FormGroup>
                                 <Label for="item">Item</Label>
                                 <Input type="text" name="name" id="item" placeholder="Add item"
@@ -75,7 +74,7 @@ class ModalWindow extends Component {
 }
 
 const mapStateToProps = state => {
-    item: state.item
+    return { item: state.item }
 };
 
 export default connect(mapStateToProps, { addItem })(ModalWindow);

@@ -66,7 +66,7 @@ ShoppingList.propTypes = {
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     item: state.item
 });
 
