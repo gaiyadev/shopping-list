@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey": ""
+    "APP_DB_CONNECTION": "mongodb+srv://gaiya:gaiya123@cluster0.d6n0r.mongodb.net/mern_blog?retryWrites=true&w=majority",
+    "jwtPrivateKey": "sl_jwt_secretKey"
 }
