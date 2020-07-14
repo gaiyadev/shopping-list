@@ -7,8 +7,7 @@ const config = require('config');
 require('dotenv').config();
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/api/users');
 let itemRouter = require('./routes/api/items')
 
 var app = express();
@@ -20,8 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/items', itemRouter);
 
 // catch 404 and forward to error handler

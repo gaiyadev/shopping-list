@@ -1,15 +1,16 @@
 import * as actionTypes from '../../redux/actions/action';
-import store from '../../redux/store/store';
+//  import store from '../../redux/store/store';
 
 const initialState = {
     items: [],
     loading: false
 };
 
+
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_ITEMS:
-            console.log(action.payload, action)
+            console.log(action.payload)
             return {
                 ...state,
                 items: action.payload,
