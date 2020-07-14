@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const e = require('express');
+const auth = require('../middleware/auth');
 
 //Creating a new user
 exports.create_new_user = (req, res) => {

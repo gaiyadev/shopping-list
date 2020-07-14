@@ -5,7 +5,7 @@ const ConnectDb = async () => {
     await mongoose.connect(process.env.APP_DB_CONNECTION,
         {
             useNewUrlParser: true,
-            // useUnifiedTopology: true,
+            useUnifiedTopology: true,
             createIndexes: true
         }).
         then(() => console.log('Connected to Database Successfully...'))

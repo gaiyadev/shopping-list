@@ -1,5 +1,6 @@
 const ItemsController = require('../../controllers/ItemController');
 var express = require('express');
+const auth = require('../../middleware/auth');
 var router = express.Router();
 
 /*  @route     GET api/items
@@ -12,7 +13,7 @@ router.get('/', ItemsController.item_get_all);
     @desc     Create an item
     @access    Public
  */
-router.post('/', ItemsController.item_add);
+router.post('/', auth, ItemsController.item_add);
 
 /*  @route     GET api/items
     @desc     Get a single item
@@ -24,7 +25,7 @@ router.get('/:id', ItemsController.item_get_one);
     @desc     Delete an item
     @access    Public
  */
-router.delete('/:id', ItemsController.item_delete);
+router.delete('/:id', auth, ItemsController.item_delete);
 
 
 
