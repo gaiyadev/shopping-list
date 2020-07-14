@@ -11,19 +11,19 @@ router.get('/', ItemsController.item_get_all);
 
 /*  @route     POST api/items
     @desc     Create an item
-    @access    Public
+    @access    Private
  */
 router.post('/', auth, ItemsController.item_add);
 
 /*  @route     GET api/items
     @desc     Get a single item
-    @access    Public
+    @access    Private
  */
 
-router.get('/:id', ItemsController.item_get_one);
+router.get('/:id', auth, ItemsController.item_get_one);
 /*  @route     DELETE api/items
     @desc     Delete an item
-    @access    Public
+    @access    Private
  */
 router.delete('/:id', auth, ItemsController.item_delete);
 

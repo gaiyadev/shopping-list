@@ -97,7 +97,14 @@ exports.login_user = async (req, res,) => {
             }
         })
     })
-    //Checking for user
-
-
+}
+exports.get_auth_user = (req, res) => {
+    User.findById(req.user.id).select('-password')
+        .then(user => {
+            res.json({
+                success: true,
+                user: user
+            })
+        })
+        .catch(err => console.log(err))
 }
