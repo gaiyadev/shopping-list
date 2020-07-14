@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import * as actionTypes from '../../redux/actions/action';
 import store from '../../redux/store/store';
 
@@ -10,7 +9,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_ITEMS:
-            console.log(action.payload)
+            console.log(action.payload, action)
             return {
                 ...state,
                 items: action.payload,
@@ -19,7 +18,7 @@ export default (state = initialState, action) => {
         case actionTypes.DELETE_ITEM:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload)
+                items: state.items.filter(item => item._id !== action.payload)
             };
         case actionTypes.ADD_ITEMS:
             return {
@@ -35,3 +34,4 @@ export default (state = initialState, action) => {
             return state;
     }
 }
+console.log(initialState.items)

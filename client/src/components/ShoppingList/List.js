@@ -37,11 +37,11 @@ class ShoppingList extends Component {
             <Container>
                 <ListGroup className="mt-5">
                     <TransitionGroup className="shopping-list">
-                        {items.map(({ id, name }) => (
-                            <CSSTransition key={id} timeout={500} classNames={styles.Fade} >
+                        {items.map(({ _id, name }) => (
+                            <CSSTransition key={_id} timeout={500} classNames={styles.Fade} >
                                 <ListGroupItem>
                                     <Button className={styles.removeBtn}
-                                        onClick={() => this.deleteItemHandler(id)}
+                                        onClick={() => this.deleteItemHandler(_id)}
                                         color="danger" size="sm">&times;</Button>
                                     {name}
                                 </ListGroupItem>

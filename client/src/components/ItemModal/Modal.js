@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/actions/itemAction';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 class ModalWindow extends Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class ModalWindow extends Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
         const newItem = {
-            id: uuid(),
+            // id: uuid(),
             name: this.state.name
         };
         //addItem using redux
