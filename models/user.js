@@ -44,5 +44,5 @@ module.exports.comparePassword = async (password, hash, callback) => {
     await bcrypt.compare(password, hash, (err, isMatch) => {
         if (err) throw err;
         return callback(null, isMatch);
-    })
+    });
 }

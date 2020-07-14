@@ -9,7 +9,7 @@ exports.create_new_user = (req, res) => {
 
     //validation
     if (!name || !email || !password) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             msg: 'Please enter all fields'
         });
@@ -40,7 +40,7 @@ exports.create_new_user = (req, res) => {
                         expiresIn: 3600
                     }, (err, token) => {
                         if (err) throw err;
-                        res.json({
+                        return res.json({
                             token: token,
                             user: {
                                 id: user._id,
@@ -62,14 +62,14 @@ exports.login_user = async (req, res,) => {
 
     // //validation
     if (!email || !password) {
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             msg: 'Please enter all fields'
         });
     }
     await User.findOne({ email: email }).then(user => {
         if (!user) {
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 msg: "Username or Password is incorrect"
             });
@@ -78,7 +78,7 @@ exports.login_user = async (req, res,) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (!isMatch) {
-                res.status(400).json({
+                return res.status(400).json({
                     success: false,
                     msg: "Username or Password is incorrect"
                 });
@@ -88,15 +88,14 @@ exports.login_user = async (req, res,) => {
                     expiresIn: 3600
                 }, (err, token) => {
                     if (err) throw err;
-                    res.status(400).json({
+                    return res.status(200).json({
                         token,
                         success: true,
                         msg: "Login successfully"
                     });
                 });
             }
-        });
-
+        })
     })
     //Checking for user
 
