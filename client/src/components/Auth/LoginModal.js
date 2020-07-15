@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { register } from '../../redux/actions/authActions';
+import { login } from '../../redux/actions/authActions';
 import { clearErrors } from '../../redux/actions/errorActions';
 import {
     Button,
@@ -17,12 +17,11 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class RegisterModal extends Component {
+class LoginModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
-            name: '',
             email: '',
             password: '',
             msg: null
@@ -32,15 +31,15 @@ class RegisterModal extends Component {
     static propTypes = {
         isAuthenticated: PropTypes.bool,
         error: PropTypes.object.isRequired,
-        register: PropTypes.func.isRequired,
+        login: PropTypes.func.isRequired,
         clearErrors: PropTypes.func.isRequired
     }
 
     componentDidUpdate(prevProps) {
-        const { error } = this.props;
+        const { error, isAuthenticated } = this.props;
         if (error !== prevProps.error) {
             //Check for register error
-            if (error.id === 'REGISTER FAIL') {
+            if (error.id === 'LOGIN FAIL') {
                 this.setState({
                     msg: error.msg.msg
                 });
@@ -48,6 +47,12 @@ class RegisterModal extends Component {
                 this.setState({
                     msg: null
                 });
+            }
+        }
+        //Chekckin auth/ close modal
+        if (this.state.modal) {
+            if (isAuthenticated) {
+                this.toggleHandler();
             }
         }
     }
@@ -62,16 +67,15 @@ class RegisterModal extends Component {
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        const { name, email, password } = this.state;
+        const { email, password } = this.state;
 
         //Create a user object
-        const newUser = {
-            name: name,
+        const user = {
             email: email,
             password: password
         };
-        // Attempt to register a user
-        this.props.register(newUser)
+        // Attempt to login a user
+        this.props.login(user)
     }
 
     onChangeHandler = event => {
@@ -84,21 +88,13 @@ class RegisterModal extends Component {
     render() {
         return (
             <div>
-                <NavLink className="text-white" href="#" onClick={this.toggleHandler}>Register</NavLink>
+                <NavLink className="text-white" href="#" onClick={this.toggleHandler}>Login</NavLink>
                 <Modal isOpen={this.state.modal} toggle={this.toggleHandler}>
-                    <ModalHeader toggle={this.toggleHandler}>Register</ModalHeader>
+                    <ModalHeader toggle={this.toggleHandler}>Login</ModalHeader>
                     <ModalBody>
                         {this.state.msg ? <Alert color="danger">{this.state.msg}</Alert> : null}
                         <Form autoComplete="off" onSubmit={this.onSubmitHandler}>
                             <FormGroup>
-                                <Label for="name">Name</Label>
-                                <Input
-                                    type="text"
-                                    name="name"
-                                    className="mb-3"
-                                    id="name"
-                                    placeholder="Your Name"
-                                    onChange={this.onChangeHandler} />
 
                                 <Label for="email">Email</Label>
                                 <Input
@@ -121,7 +117,7 @@ class RegisterModal extends Component {
                             </FormGroup>
 
 
-                            <Button type="submit" className="btn btn-lg mt-5" color="primary">Register</Button>
+                            <Button type="submit" className="btn btn-lg mt-5" color="primary">login</Button>
                         </Form>
                     </ModalBody>
                     <ModalFooter>
@@ -140,4 +136,4 @@ const mapStateToProps = state => ({
     error: state.error
 });
 
-export default connect(mapStateToProps, { register, clearErrors })(RegisterModal);
+export default connect(mapStateToProps, { login, clearErrors })(LoginModal);

@@ -37,8 +37,37 @@ export const register = ({ name, email, password }) => dispatch => {
         })
 };
 
-//checking token & load user
 
+//Register a user
+
+export const login = ({ email, password }) => dispatch => {
+    //Headers
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    };
+
+    //Reguest body
+    const body = JSON.stringify({ email, password });
+
+    axios.post(' api/users/login', body, config).then(res => dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+    }))
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN FAIL'));
+            dispatch({
+                type: LOGIN_FAIL
+            })
+        })
+};
+
+
+
+
+
+//checking token & load user
 export const loadUser = () => (dispatch, getState) => {
     //use4r Loading
     dispatch({

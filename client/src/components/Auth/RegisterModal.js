@@ -51,11 +51,12 @@ class RegisterModal extends Component {
             }
         }
         //Chekckin auth/ close modal
-        // if (this.state.modal) {
-        //     if (isAuthenticated) {
-        //         this.toggleHandler();
-        //     }
-        // }
+        if (this.state.modal) {
+            if (isAuthenticated) {
+                this.toggleHandler();
+            }
+        }
+
     }
 
     toggleHandler = () => {
