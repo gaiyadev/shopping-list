@@ -29,7 +29,6 @@ exports.create_new_user = (req, res) => {
             // saving
             User.newUser(newUser, (err, user) => {
                 if (err) throw err;
-
                 //jwt
                 jwt.sign({
                     id: user._id,

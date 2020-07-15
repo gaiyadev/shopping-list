@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RegisterModal from '../Auth/RegisterModal';
 import {
     Collapse,
     Navbar,
@@ -41,10 +42,7 @@ class AppBar extends Component {
                                         </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink
-                                        className="text-white"
-                                        href="/">
-                                        Sigin up</NavLink>
+                                  <RegisterModal/>
                                 </NavItem>
                             </Nav>
                         </Collapse>
