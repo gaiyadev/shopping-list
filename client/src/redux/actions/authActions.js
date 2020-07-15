@@ -78,3 +78,11 @@ export const tokenConfig = getState => {
     }
     return config;
 }
+
+
+//Logout user
+export const logout = () => {
+    return {
+        type: LOGOUT_SUCCESS
+    };
+}

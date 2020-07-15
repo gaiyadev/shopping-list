@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegisterModal from '../Auth/RegisterModal';
+import Logout from '../Auth/Logout';
 import {
     Collapse,
     Navbar,
@@ -42,7 +43,10 @@ class AppBar extends Component {
                                         </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                  <RegisterModal/>
+                                    <RegisterModal />
+                                </NavItem>
+                                <NavItem>
+                                    <Logout />
                                 </NavItem>
                             </Nav>
                         </Collapse>
