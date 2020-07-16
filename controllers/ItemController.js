@@ -3,8 +3,6 @@ const Item = require('../models/item');
 /*  @route     GET api/items
     @desc     Get all items
     @access    Public
-     mongodb+srv://gaiya:gaiya123@cluster0.d6n0r.mongodb.net/mern_blog?retryWrites=true&w=majority
-
  */
 exports.item_get_all = (req, res) => {
     Item.find()
