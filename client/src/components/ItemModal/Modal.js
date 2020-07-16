@@ -49,7 +49,12 @@ class ModalWindow extends Component {
     render() {
         return (
             <div>
-                <Button color="primary" onClick={this.toggleHandler}>Add item</Button>
+                {
+                    this.props.isAuthenticated ?
+                        <Button color="primary" onClick={this.toggleHandler}>Add item</Button>
+                        : <h4 className="mb-3 ml-4">Please login to manage items</h4>
+                }
+
                 <Modal isOpen={this.state.modal} toggle={this.toggleHandler}>
                     <ModalHeader toggle={this.toggleHandler}>Add Item</ModalHeader>
                     <ModalBody>
@@ -72,7 +77,11 @@ class ModalWindow extends Component {
 }
 
 const mapStateToProps = state => {
-    return { item: state.item }
+    return {
+        item: state.item,
+        isAuthenticated: state.auth.isAuthenticated
+
+    }
 };
 
 export default connect(mapStateToProps, { addItem })(ModalWindow);
